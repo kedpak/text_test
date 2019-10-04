@@ -6,10 +6,10 @@ Start local environment to load html file.
 
 Input a string into text field.
 
-![Input string and click submit button](https://ibb.co/LNRXMrk)
+![Input string and click submit button](img1.png)
 
 
 Click the submit button and list of word with count should appear.
 
 
-![word count](https://ibb.co/4VWHD8q)
+![word count](img2.png)
