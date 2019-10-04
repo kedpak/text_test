@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript program to count all words in string </title>
+    </head>
+    <body>
+        <h2>Input string here to get word count</h2>
+        <input id="input-field" style="width:800px; height:200px"></input>
+        <button id="submit-button" style="width:200px; height:100px">Submit</button>
+        <list id="word-list" style="font-size: 30px"></list>
+    </body>
+
+    <script>
+        document.addEventListener('click', function (event) {
+            if (!event.target.matches('#submit-button')) return;
+
+            document.getElementById('word-list').innerHTML = ""; // Clear list
+            
+            let inputString = document.getElementById('input-field').value;
+            let wordArray = inputString.split(/[ ,-.!?]+/);
+            let wordCount = {};
+
+
+            // Place each word in object if it does not exist. If it does, iterate count by one.
+            wordArray.forEach((word) => {
+                let wordLower = word.toLowerCase();
+                
+                if (word === "") return;
+                
+                if (!wordCount.hasOwnProperty(wordLower)) {
+                    wordCount[wordLower] = 1;
+                } else {
+                    wordCount[wordLower] += 1;
+                }
+            });
+
+            
+            let entries = Object.entries(wordCount);
+
+            // Itereate through all entries and append to list element.
+            entries.forEach((entry) => {
+                let listItem = document.createElement("LI");
+                let listText = document.createTextNode(entry[0] + " = " + entry[1]);
+                listItem.appendChild(listText);
+
+                document.getElementById('word-list').appendChild(listItem);
+            });
+            
+        }, false);
+    </script>
+</html>
